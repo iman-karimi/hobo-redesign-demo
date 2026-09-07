@@ -13,26 +13,43 @@ export default function Home() {
       <div className="demo">
         UNOFFICIAL REDESIGN CONCEPT — NOT THE OFFICIAL HOBO WEBSITE
       </div>
+<header className="nav shell">
+  <a className="brand" href="#home">
+    <span className="logo">⌨</span>
+    <span>
+      <b>HOBO</b>
+      <small>Computer Services</small>
+    </span>
+  </a>
 
-      <header className="nav shell">
-        <a className="brand" href="#home">
-          <span className="logo">⌨</span>
-          <span><b>HOBO</b><small>Computer Services</small></span>
-        </a>
+  <nav className="desktopNav">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#business">For Business</a>
+    <a href="#about">About</a>
+    <a href="#support">Support</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-        <nav>
-          <a href="#home">Home</a>
-          <a href="#services">Services</a>
-          <a href="#business">For Business</a>
-          <a href="#about">About</a>
-          <a href="#support">Support</a>
-          <a href="#contact">Contact</a>
-        </nav>
+  <div className="navActions">
+    <a className="call" href="tel:+14165613204">
+      ☎ <span>416 561-3204</span>
+    </a>
 
-        <a className="call" href="tel:+14165613204">
-          ☎ 416 561-3204
-        </a>
-      </header>
+    <details className="mobileMenu">
+      <summary aria-label="Open navigation menu">☰</summary>
+
+      <div className="mobileMenuPanel">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#business">For Business</a>
+        <a href="#about">About</a>
+        <a href="#support">Support</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </details>
+  </div>
+</header>
 
       <section id="home" className="hero">
         <div className="shell heroGrid">
