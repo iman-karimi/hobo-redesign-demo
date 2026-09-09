@@ -1,10 +1,10 @@
 const services = [
-  ["01", "⌘", "Computer Repair", "Desktop and laptop troubleshooting, hardware support and performance help."],
-  ["02", "▦", "Business IT Support", "Practical support for home offices, professionals and small businesses."],
-  ["03", "◎", "Wi-Fi & Networking", "Wireless setup, network troubleshooting, printers and device connectivity."],
-  ["04", "✦", "Virus Removal", "Virus and spyware removal plus safer-computing guidance."],
-  ["05", "⚙", "Computer Setup", "New computers, laptops, software, printers and internet setup."],
-  ["06", "</>", "Web Services", "Web design, development, hosting, domains and webmaster support."]
+  ["01", "computer", "Computer Repair", "Desktop and laptop troubleshooting, hardware support and performance help."],
+  ["02", "business", "Business IT Support", "Practical support for home offices, professionals and small businesses."],
+  ["03", "wifi", "Wi-Fi & Networking", "Wireless setup, network troubleshooting, printers and device connectivity."],
+  ["04", "shield", "Virus Removal", "Virus and spyware removal plus safer-computing guidance."],
+  ["05", "settings", "Computer Setup", "New computers, laptops, software, printers and internet setup."],
+  ["06", "code", "Web Services", "Web design, development, hosting, domains and webmaster support."]
 ];
 
 const benefits = [
@@ -13,6 +13,35 @@ const benefits = [
   ["Practical solutions", "Clear help focused on getting your technology working again."],
   ["Personal service", "Support designed for households, home offices and small businesses."]
 ];
+
+function ServiceIcon({ type }) {
+  const common = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    "aria-hidden": "true"
+  };
+
+  if (type === "computer") {
+    return <svg {...common}><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>;
+  }
+  if (type === "business") {
+    return <svg {...common}><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-3h4v3"/></svg>;
+  }
+  if (type === "wifi") {
+    return <svg {...common}><path d="M5 9.5a10 10 0 0 1 14 0M8 13a6 6 0 0 1 8 0M10.8 16.2a2 2 0 0 1 2.4 0"/><circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"/></svg>;
+  }
+  if (type === "shield") {
+    return <svg {...common}><path d="M12 3 19 6v5c0 4.6-2.9 8-7 10-4.1-2-7-5.4-7-10V6l7-3Z"/><path d="m9.5 12 1.7 1.7 3.6-3.9"/></svg>;
+  }
+  if (type === "settings") {
+    return <svg {...common}><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21h-4v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H3v-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6V3h4v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9A1.7 1.7 0 0 0 21 10h.1v4H21a1.7 1.7 0 0 0-1.6 1Z"/></svg>;
+  }
+  return <svg {...common}><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg>;
+}
 
 export default function Home() {
   return (
@@ -31,7 +60,8 @@ export default function Home() {
         .card:hover:before{opacity:1}
         .cardTop{align-items:center!important}
         .serviceMeta{display:flex;align-items:center;gap:11px}
-        .serviceIcon{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#edf5ff;color:#1169db;font-size:16px;font-weight:800;line-height:1}
+        .serviceIcon{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:#edf5ff;color:#1169db;line-height:1;flex:0 0 40px}
+        .serviceIcon svg{width:21px;height:21px;display:block}
         .cardNum{font-size:10px!important;letter-spacing:.14em!important;color:#7990aa!important}
         .cardArrow{width:31px!important;height:31px!important;font-size:13px;transition:.2s}
         .card:hover .cardArrow{background:#1169db;color:white;transform:translate(1px,-1px)}
@@ -40,7 +70,7 @@ export default function Home() {
         .card a{margin-top:18px!important;padding-top:0!important;font-size:12.5px!important;display:inline-flex;gap:6px;align-items:center}
         .card a span{transition:.2s}.card:hover a span{transform:translateX(3px)}
         @media(max-width:980px){.cards{gap:18px!important}.card{min-height:220px!important}}
-        @media(max-width:640px){.servicesSection{padding-top:64px;padding-bottom:68px}.cards{gap:14px!important}.card{min-height:0!important;padding:21px!important}.card h3{margin-top:17px!important}.card p{max-width:100%}.serviceIcon{width:36px;height:36px}}
+        @media(max-width:640px){.servicesSection{padding-top:64px;padding-bottom:68px}.cards{gap:14px!important}.card{min-height:0!important;padding:21px!important}.card h3{margin-top:17px!important}.card p{max-width:100%}.serviceIcon{width:38px;height:38px;flex-basis:38px}.serviceIcon svg{width:20px;height:20px}}
       `}</style>
 
       <div className="demo">UNOFFICIAL REDESIGN CONCEPT — NOT THE OFFICIAL HOBO WEBSITE</div>
@@ -123,7 +153,7 @@ export default function Home() {
           {services.map(([num, icon, title, desc]) => (
             <article className="card" key={title}>
               <div className="cardTop">
-                <div className="serviceMeta"><span className="serviceIcon">{icon}</span><span className="cardNum">{num}</span></div>
+                <div className="serviceMeta"><span className="serviceIcon"><ServiceIcon type={icon} /></span><span className="cardNum">{num}</span></div>
                 <span className="cardArrow">↗</span>
               </div>
               <h3>{title}</h3><p>{desc}</p><a href="#contact">Get support <span>→</span></a>
