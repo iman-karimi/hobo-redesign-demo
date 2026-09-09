@@ -1,10 +1,10 @@
 const services = [
-  ["01", "Computer Repair", "Desktop and laptop troubleshooting, hardware support and performance help."],
-  ["02", "Business IT Support", "Practical support for home offices, professionals and small businesses."],
-  ["03", "Wi-Fi & Networking", "Wireless setup, network troubleshooting, printers and device connectivity."],
-  ["04", "Virus Removal", "Virus and spyware removal plus safer-computing guidance."],
-  ["05", "Computer Setup", "New computers, laptops, software, printers and internet setup."],
-  ["06", "Web Services", "Web design, development, hosting, domains and webmaster support."]
+  ["01", "⌘", "Computer Repair", "Desktop and laptop troubleshooting, hardware support and performance help."],
+  ["02", "▦", "Business IT Support", "Practical support for home offices, professionals and small businesses."],
+  ["03", "◎", "Wi-Fi & Networking", "Wireless setup, network troubleshooting, printers and device connectivity."],
+  ["04", "✦", "Virus Removal", "Virus and spyware removal plus safer-computing guidance."],
+  ["05", "⚙", "Computer Setup", "New computers, laptops, software, printers and internet setup."],
+  ["06", "</>", "Web Services", "Web design, development, hosting, domains and webmaster support."]
 ];
 
 const benefits = [
@@ -17,6 +17,32 @@ const benefits = [
 export default function Home() {
   return (
     <main>
+      <style>{`
+        .brandMark{overflow:hidden;background:linear-gradient(145deg,#f5f9ff,#eaf3ff);box-shadow:inset 0 0 0 1px rgba(17,105,219,.05)}
+        .brandMark:before{width:23px!important;height:16px!important;top:8px!important;background:transparent!important;border:2px solid #1169db;border-radius:4px!important}
+        .brandMark:after{width:17px!important;height:2px!important;top:27px!important;background:#1169db!important;border-radius:99px!important}
+        .brandMark span{display:none!important}
+        .servicesSection{padding-top:88px;padding-bottom:96px}
+        .servicesSection .splitHead{margin-bottom:34px}
+        .cards{gap:22px!important}
+        .card{position:relative;min-height:232px!important;padding:24px 25px 23px!important;border-radius:18px!important;border:1px solid #e1e9f2!important;background:linear-gradient(180deg,#fff 0%,#fbfdff 100%)!important;box-shadow:0 8px 24px rgba(18,50,86,.045);overflow:hidden}
+        .card:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:#1169db;opacity:0;transition:.25s}
+        .card:hover{transform:translateY(-4px)!important;box-shadow:0 18px 38px rgba(15,42,74,.10)!important;border-color:#cfe0f4!important}
+        .card:hover:before{opacity:1}
+        .cardTop{align-items:center!important}
+        .serviceMeta{display:flex;align-items:center;gap:11px}
+        .serviceIcon{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#edf5ff;color:#1169db;font-size:16px;font-weight:800;line-height:1}
+        .cardNum{font-size:10px!important;letter-spacing:.14em!important;color:#7990aa!important}
+        .cardArrow{width:31px!important;height:31px!important;font-size:13px;transition:.2s}
+        .card:hover .cardArrow{background:#1169db;color:white;transform:translate(1px,-1px)}
+        .card h3{font-size:21px!important;margin:20px 0 8px!important;line-height:1.2}
+        .card p{font-size:14.5px;line-height:1.58!important;max-width:95%}
+        .card a{margin-top:18px!important;padding-top:0!important;font-size:12.5px!important;display:inline-flex;gap:6px;align-items:center}
+        .card a span{transition:.2s}.card:hover a span{transform:translateX(3px)}
+        @media(max-width:980px){.cards{gap:18px!important}.card{min-height:220px!important}}
+        @media(max-width:640px){.servicesSection{padding-top:64px;padding-bottom:68px}.cards{gap:14px!important}.card{min-height:0!important;padding:21px!important}.card h3{margin-top:17px!important}.card p{max-width:100%}.serviceIcon{width:36px;height:36px}}
+      `}</style>
+
       <div className="demo">UNOFFICIAL REDESIGN CONCEPT — NOT THE OFFICIAL HOBO WEBSITE</div>
 
       <header className="siteHeader">
@@ -94,9 +120,12 @@ export default function Home() {
         </div>
 
         <div className="cards">
-          {services.map(([num, title, desc]) => (
+          {services.map(([num, icon, title, desc]) => (
             <article className="card" key={title}>
-              <div className="cardTop"><span className="cardNum">{num}</span><span className="cardArrow">↗</span></div>
+              <div className="cardTop">
+                <div className="serviceMeta"><span className="serviceIcon">{icon}</span><span className="cardNum">{num}</span></div>
+                <span className="cardArrow">↗</span>
+              </div>
               <h3>{title}</h3><p>{desc}</p><a href="#contact">Get support <span>→</span></a>
             </article>
           ))}
